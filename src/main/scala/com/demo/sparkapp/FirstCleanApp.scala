@@ -6,10 +6,10 @@ import org.apache.spark.sql.SparkSession
 /**
   * 1.从原始数据中截取信息
   */
-class FirstCleanApp {
+object FirstCleanApp {
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder().appName("FirstCleanApp").master("local[2]").getOrCreate()
-    val access = spark.sparkContext.textFile("")
+    val access = spark.sparkContext.textFile("D:\\access.test.log")
 
     //开始处理
     access.map(line => {
@@ -22,7 +22,7 @@ class FirstCleanApp {
 
       DateUtil.parse(time)+"\t"+url+"\t"+traffic
 
-    }).take(10).foreach(println)
+    }).saveAsTextFile("D:\\clean.log")//.take(10).foreach(println)
   }
 
 }

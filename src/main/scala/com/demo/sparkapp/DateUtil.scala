@@ -2,7 +2,7 @@ package com.demo.sparkapp
 
 import java.util.{Date, Locale}
 
-import org.apache.commons.lang.time.FastDateFormat
+import org.apache.commons.lang3.time.FastDateFormat
 
 /**
   * 时间转换
@@ -17,7 +17,7 @@ object DateUtil {
 
   def getTime(time:String):Long={
     try{
-      YYYYMMDDHHMM_TIME_FORMAT.parseObject(time.substring(time.indexOf("[")+1,time.lastIndexOf("]"))).getTime
+      YYYYMMDDHHMM_TIME_FORMAT.parse(time.substring(time.indexOf("[")+1,time.lastIndexOf("]"))).getTime
     }catch {
       case e:Exception=>{
         0L

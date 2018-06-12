@@ -14,6 +14,8 @@ import scala.collection.mutable.ListBuffer
   */
 object TopNStatJob {
 
+  case class VideoAccessTopNStat(day:String,cmsId:Long,times:Long)
+
   //统计视频前N个
   def VideoAccessTopNStat(spark:SparkSession,accessDF:DataFrame,day:String): Unit ={
     /*
@@ -50,7 +52,6 @@ object TopNStatJob {
     })
   }
 
-  case class VideoAccessTopNStat(day:String,cmsId:Long,times:Long)
 
   def main(args: Array[String]): Unit = {
     val spark=SparkSession.builder().appName("TopNStatJob").master("local[2]")

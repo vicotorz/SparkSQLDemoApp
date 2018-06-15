@@ -2,7 +2,6 @@ package com.demo.sparkapp
 
 import org.apache.spark.sql.SparkSession
 
-
 /**
   * 1.从原始数据中截取信息
   */
@@ -22,7 +21,7 @@ object FirstCleanApp {
 
       DateUtil.parse(time)+"\t"+url+"\t"+traffic
 
-    }).saveAsTextFile("D:\\clean.log")//.take(10).foreach(println)
+    }).take(10).foreach(println)//.saveAsTextFile("D:\\cleantemp.log")//
   }
 
 }

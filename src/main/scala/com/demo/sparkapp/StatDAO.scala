@@ -40,6 +40,7 @@ object StatDAO {
 
   //删除指定日期的数据
   def deleteData(day: String) = {
+    //清空所有表各种的数据
     val tables = Array("day_video_access_topn_stat",
       "day_video_city_access_topn_stat",
       "day_video_traffics_topn_stat")

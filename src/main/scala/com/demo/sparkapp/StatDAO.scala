@@ -2,15 +2,15 @@ package com.demo.sparkapp
 
 import java.sql.{Connection, PreparedStatement}
 
+import com.demo.Utils.MySQLUtil
+import com.demo.sparkapp.TopNStatJob.VideoAccessTopNStat
+
 import scala.collection.mutable.ListBuffer
 
 /**
   * Created by dell on 2018/6/12.
   */
 object StatDAO {
-
-  case class VideoAccessTopNStat(day: String, cmsId: Long, times: Long)
-
   //将List中的内容存进数据库
   def insertDayVideoAccessTopN(list: ListBuffer[VideoAccessTopNStat]) = {
     var connection: Connection = null

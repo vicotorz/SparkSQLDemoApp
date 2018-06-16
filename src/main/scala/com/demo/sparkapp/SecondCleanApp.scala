@@ -1,6 +1,7 @@
 package com.demo.sparkapp
 
-import org.apache.spark.sql.SparkSession
+import com.demo.Utils.AccessConvertUtil
+import org.apache.spark.sql.{SaveMode, SparkSession}
 
 
 /**
@@ -19,7 +20,7 @@ object SecondCleanApp {
     accessDF.printSchema()
     accessDF.show(false)
     //控制文件输出的大小： coalesce方法
-    //accessDF.coalesce(1).write.format("parquet").partitionBy("day").mode(SaveMode.Overwrite).save("D:\\\\clean.log")
+    accessDF.coalesce(1).write.format("parquet").partitionBy("day").mode(SaveMode.Overwrite).save("D:\\\\clean.log")
     spark.stop()
   }
 }

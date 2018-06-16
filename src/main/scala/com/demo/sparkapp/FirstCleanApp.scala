@@ -1,5 +1,6 @@
 package com.demo.sparkapp
 
+import com.demo.Utils.DateUtil
 import org.apache.spark.sql.SparkSession
 
 /**

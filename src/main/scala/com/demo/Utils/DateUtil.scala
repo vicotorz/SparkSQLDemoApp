@@ -1,4 +1,4 @@
-package com.demo.sparkapp
+package com.demo.Utils
 
 import java.util.{Date, Locale}
 

@@ -1,12 +1,11 @@
-package com.demo.sparkapp
-
+package com.demo.Utils
 
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.types.{LongType, StringType, StructField, StructType}
 
 
 /**
-  *
+  * 转换工具
   */
 object AccessConvertUtil {
   //定义输出字段
@@ -40,7 +39,7 @@ object AccessConvertUtil {
     val cmsType = if (cmsTypeId.length > 1) cmsTypeId(cmsTypeId.length-2) else ""
     val cmsId = if (cmsTypeId.length > 1) cmsTypeId(cmsTypeId.length-1).toLong else 0l
 
-    val city = IPUtils.parse(ip) //IpUtils
+    val city = IPUtil.parse(ip) //IpUtils
     val day = time.substring(0, 10).replaceAll("-", "|")
 
     Row(url, cmsType, cmsId, traffic, ip, city, time, day)

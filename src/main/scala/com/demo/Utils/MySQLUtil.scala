@@ -1,4 +1,4 @@
-package com.demo.sparkapp
+package com.demo.Utils
 
 import java.sql.{Connection, DriverManager, PreparedStatement}
 
@@ -7,7 +7,7 @@ import java.sql.{Connection, DriverManager, PreparedStatement}
   */
 object MySQLUtil {
   def getConnection() = {
-    DriverManager.getConnection("jdbc:mysql://localhost:3306/imooc_project?user=root&password=123")
+    DriverManager.getConnection("jdbc:mysql://localhost:3306/imooc_project?user=root&password=")
   }
 
   def release(connection:Connection,pstmt:PreparedStatement) = {

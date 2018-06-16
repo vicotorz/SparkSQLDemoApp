@@ -1,11 +1,11 @@
-package com.demo.sparkapp
+package com.demo.Utils
 
 import com.ggstar.util.ip.IpHelper
 
 /**
   * IP转换省份
   */
-object IPUtils {
+object IPUtil {
   def parse(ip:String):String={
     IpHelper.findRegionByIp(ip)
   }

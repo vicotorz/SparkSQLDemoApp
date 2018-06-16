@@ -9,7 +9,7 @@ import org.apache.commons.lang3.time.FastDateFormat
   */
 object DateUtil {
   val YYYYMMDDHHMM_TIME_FORMAT=FastDateFormat.getInstance("dd/MMM/yyyy:HH:mm:ss Z", Locale.ENGLISH)
-  val TARGET_FORMAT=FastDateFormat.getInstance("dd/MMM/yyyy:HH:mm:ss Z", Locale.ENGLISH)
+  val TARGET_FORMAT=FastDateFormat.getInstance("yyyy-MM-dd HH:mm:ss")
 
   def parse(time:String)={
     TARGET_FORMAT.format(new Date(getTime(time)))
@@ -23,6 +23,10 @@ object DateUtil {
         0L
       }
     }
+  }
 
+  def main(args: Array[String]): Unit = {
+    val time="10/Nov/2016:00:01:02 +0800"
+    println(getTime(time))
   }
 }

@@ -31,14 +31,17 @@ object AccessConvertUtil {
     val ip = splits(3)
 
     val domain = "http://www.imooc.com"
-    val cms = url.substring(url.indexOf(domain) + domain.length)
+    var cms = ""
+    if (log.contains(domain)) {
+      cms = url.substring(url.indexOf(domain) + domain.length)
+    }
     val cmsTypeId = cms.split("/")
+    //cmsTypeId.foreach(println)
+    val cmsType = if (cmsTypeId.length > 1) cmsTypeId(cmsTypeId.length-2) else ""
+    val cmsId = if (cmsTypeId.length > 1) cmsTypeId(cmsTypeId.length-1).toLong else 0l
 
-    val cmsType = if (cmsTypeId.length > 1) cmsTypeId(0) else " "
-    val cmsId = if (cmsTypeId.length > 1) cmsTypeId(0) else " "
-    val day = time.substring(0, 10).replaceAll("", "|")
-
-    val city = IPUtils.parse(ip)//IpUtils
+    val city = IPUtils.parse(ip) //IpUtils
+    val day = time.substring(0, 10).replaceAll("-", "|")
 
     Row(url, cmsType, cmsId, traffic, ip, city, time, day)
   }

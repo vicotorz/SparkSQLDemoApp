@@ -4,6 +4,7 @@ import org.apache.spark.sql.SparkSession
 
 /**
   * 1.从原始数据中截取信息
+  * 访问时间、访问URL、耗费的流量、访问IP地址信息
   */
 object FirstCleanApp {
   def main(args: Array[String]): Unit = {
@@ -19,9 +20,11 @@ object FirstCleanApp {
       val url = splits(11).replaceAll("\"", "")
       val traffic = splits(9)
 
-      DateUtil.parse(time)+"\t"+url+"\t"+traffic
+      DateUtil.parse(time) + "\t" + url + "\t" + traffic + "\t" + ip
 
-    }).take(10).foreach(println)//.saveAsTextFile("D:\\cleantemp.log")//
+    }).saveAsTextFile("D:\\clean_first.log")//.take(30).foreach(println)
+
+    spark.stop()
   }
 
 }
